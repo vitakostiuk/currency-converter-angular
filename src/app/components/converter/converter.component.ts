@@ -17,17 +17,20 @@ export class ConverterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   convertValue = () => {
+    // Якщо обидва значення в селектах рівні
     if (this.selectedOption1 === this.selectedOption2) {
-      this.result = this.input; // записуємо в поле result дані из поля input
-    }
-    
-    if (this.selectedOption1 === "UAH") {
-      this.sum = Number(this.input) * this.rates[this.selectedOption1 as keyof IRates]; // Переводимо суму в UAH
+      this.result = this.input; // То записуємо в поле result дані из поля input
+      // Якщо значення select1 === UAH, то
+    } else if (this.selectedOption1 === "UAH") {
+      this.sum = Number(this.input) * this.rates[this.selectedOption1]; // Переводимо суму в UAH
       this.result = (this.sum / this.rates[this.selectedOption2 as keyof IRates]).toFixed(2); // Ділимо на курс і округлюємо
-    }
-    
-    if (this.selectedOption1 !== "UAH") {
+    } else if (this.selectedOption2 === "UAH") {
+      this.sum = Number(this.result) * this.rates[this.selectedOption2 as keyof IRates]; // Переводимо суму в UAH
+      this.result = (this.sum * this.rates[this.selectedOption1 as keyof IRates]).toFixed(2); // Ділимо на курс і округлюємо
+    } else {
+      // Якщо значення select1 !== UAH
       this.result = (this.rates[this.selectedOption1 as keyof IRates] * this.rates[this.selectedOption2 as keyof IRates]).toFixed(
         2
       ); // Множимо значення select1 на значення select2

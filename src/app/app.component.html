@@ -332,6 +332,39 @@
 <div class="content" role="main">
   <app-converter [rates]="rates"></app-converter>
 
+  <!-- <div>
+    <h2>Міняю</h2>
+    <input
+      type="number"
+      id="input"
+      placeholder="Введіть суму..."
+      (input)="handleChangeInput($event)"
+    />
+    <select
+      name="select1"
+      [ngModel]="selectedOption1"
+      (change)="handleChangeSelect1($event)"
+    >
+      <option value="UAH">UAH</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+  </div>
+
+  <div>
+    <h2>Отримую</h2>
+    <input type="number" id="result" value="{{ result }}" readonly />
+    <select
+      name="select2"
+      [ngModel]="selectedOption2"
+      (change)="handleChangeSelect2($event)"
+    >
+      <option value="UAH">UAH</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+  </div> -->
+
   <!-- Footer -->
   <footer class="footer">
     <a
