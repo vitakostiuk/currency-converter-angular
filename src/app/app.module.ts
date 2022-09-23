@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import {ConverterComponent} from './components/converter/converter.component';
+import { RatesComponent } from './components/rates/rates.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConverterComponent,
+    RatesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
