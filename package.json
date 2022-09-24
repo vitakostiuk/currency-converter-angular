@@ -1,7 +1,6 @@
 {
   "name": "currency-converter-angular",
   "version": "0.0.0",
-  "homepage": "https://vitakostiuk.github.io/currency-converter-angular",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
