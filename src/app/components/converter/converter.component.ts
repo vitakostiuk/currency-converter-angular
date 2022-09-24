@@ -10,7 +10,7 @@ export class ConverterComponent implements OnInit {
   @Input() rates: IRates;
 
   input = '';
-  result = '';
+  result = '0';
   selectedOption1 = 'UAH';
   selectedOption2 = 'UAH';
   sum = 0;
@@ -28,7 +28,7 @@ export class ConverterComponent implements OnInit {
       this.result = (this.sum / this.rates[this.selectedOption2 as keyof IRates]).toFixed(2); // Ділимо на курс і округлюємо
     } else if (this.selectedOption2 === "UAH") {
       this.sum = Number(this.result) * this.rates[this.selectedOption2 as keyof IRates]; // Переводимо суму в UAH
-      this.result = (this.sum * this.rates[this.selectedOption1 as keyof IRates]).toFixed(2); // Ділимо на курс і округлюємо
+      this.result = (this.sum * this.rates[this.selectedOption1 as keyof IRates]).toFixed(2); // Множимо на курс і округлюємо
     } else {
       // Якщо значення select1 !== UAH
       this.result = (this.rates[this.selectedOption1 as keyof IRates] * this.rates[this.selectedOption2 as keyof IRates]).toFixed(

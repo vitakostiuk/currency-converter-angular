@@ -1,15 +1,17 @@
-<div>
-  <h2>Міняю</h2>
+<div class="container">
+  <h2 class="converterTitle">Міняю</h2>
   <input
     type="number"
     id="input"
     placeholder="Введіть суму..."
     (input)="handleChangeInput($event)"
+    class="input"
   />
   <select
     name="select1"
     [ngModel]="selectedOption1"
     (change)="handleChangeSelect1($event)"
+    class="select"
   >
     <option value="UAH">UAH</option>
     <option value="USD">USD</option>
@@ -18,12 +20,19 @@
 </div>
 
 <div>
-  <h2>Отримую</h2>
-  <input type="number" id="result" value="{{ result }}" readonly />
+  <h2 class="converterTitle">Отримую</h2>
+  <input
+    type="number"
+    id="result"
+    value="{{ result }}"
+    class="input"
+    readonly
+  />
   <select
     name="select2"
     [ngModel]="selectedOption2"
     (change)="handleChangeSelect2($event)"
+    class="select"
   >
     <option value="UAH">UAH</option>
     <option value="USD">USD</option>

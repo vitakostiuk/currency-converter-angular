@@ -1,4 +1,26 @@
+.rateBlock {
+  width: 322px;
+  display: block;
+  margin: 0 auto;
+}
+
+.rateContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rate {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.rateTitle {
+  display: flex;
+  justify-content: center;
+}
+
 .list {
+  width: 100%;
   display: flex;
   margin: 0;
   padding: 0;
@@ -6,6 +28,11 @@
 }
 
 .list_item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
   color: #333;
-  margin-right: 50px;
 }
