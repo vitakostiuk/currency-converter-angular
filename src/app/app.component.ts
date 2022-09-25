@@ -25,7 +25,6 @@ constructor(private ratesService: RatesService) {
   ngOnInit(): void {
     this.loading = true;
     this.ratesService.getCurrency().subscribe((currencies) => {
-      console.log(currencies);
 
       const filteredCurrencies = currencies.filter(
         (currency) => currency.cc === "USD" || currency.cc === "EUR"
