@@ -1,41 +1,47 @@
 <div class="container">
   <h2 class="converterTitle">Міняю</h2>
-  <input
-    type="number"
-    id="input"
-    placeholder="Введіть суму..."
-    (input)="handleChangeInput($event)"
-    class="input"
-  />
-  <select
-    name="select1"
-    [ngModel]="selectedOption1"
-    (change)="handleChangeSelect1($event)"
-    class="select"
-  >
-    <option value="UAH">UAH</option>
-    <option value="USD">USD</option>
-    <option value="EUR">EUR</option>
-  </select>
+  <form [formGroup]="converterForm1">
+    <input
+      formControlName="input"
+      type="number"
+      placeholder="Введіть суму..."
+      (input)="handleChangeInput()"
+      class="input"
+    />
+    <select
+      formControlName="selectedOption1"
+      (change)="handleChangeSelect1()"
+      class="select"
+    >
+      <ng-container *ngFor="let currency of currencies">
+        <option [value]="currency.cc">
+          {{ currency.cc }}
+        </option>
+      </ng-container>
+    </select>
+  </form>
 </div>
 
 <div>
   <h2 class="converterTitle">Отримую</h2>
-  <input
-    type="number"
-    id="result"
-    value="{{ result }}"
-    class="input"
-    readonly
-  />
-  <select
-    name="select2"
-    [ngModel]="selectedOption2"
-    (change)="handleChangeSelect2($event)"
-    class="select"
-  >
-    <option value="UAH">UAH</option>
-    <option value="USD">USD</option>
-    <option value="EUR">EUR</option>
-  </select>
+  <form [formGroup]="converterForm2">
+    <input
+      formControlName="result"
+      value="{{ converterForm2.value.result }}"
+      type="number"
+      class="input"
+      readonly
+    />
+    <select
+      formControlName="selectedOption2"
+      (change)="handleChangeSelect2()"
+      class="select"
+    >
+      <ng-container *ngFor="let currency of currencies">
+        <option [value]="currency.cc">
+          {{ currency.cc }}
+        </option>
+      </ng-container>
+    </select>
+  </form>
 </div>

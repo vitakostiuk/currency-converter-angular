@@ -1,19 +1,19 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <!-- <img
-    width="40"
-    alt="Currency Converter Logo"
-    src="https://icon-library.com/images/rate-icon/rate-icon-11.jpg"
-  />
-  <span class="title">{{ title }}</span>
-  <div class="spacer"></div> -->
-
-  <app-rates [rates]="rates"></app-rates>
+  <div class="rateBlock">
+    <h1 class="rateTitle">Курс валют</h1>
+    <ul class="list">
+      <app-rates
+        *ngFor="let currency of currencies | slice: 1; let i = index"
+        [currency]="currency"
+      ></app-rates>
+    </ul>
+  </div>
 </div>
 
 <!-- Main -->
 <div class="content" role="main">
-  <app-converter [rates]="rates"></app-converter>
+  <app-converter [currencies]="currencies" [rates]="rates"></app-converter>
 
   <!-- Footer -->
   <footer class="footer">

@@ -1,5 +1,7 @@
+import { ICurrency } from './../../models/currency';
 import { IRates } from './../../models/rates';
 import { Component, Input, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-converter',
@@ -8,49 +10,76 @@ import { Component, Input, OnInit } from "@angular/core";
 
 export class ConverterComponent implements OnInit {
   @Input() rates: IRates;
+  @Input() currencies: ICurrency[];
+  @Input() currency: ICurrency;
 
-  input = '';
-  result = '0';
-  selectedOption1 = 'UAH';
-  selectedOption2 = 'UAH';
-  sum = 0;
+  converterForm1 = new FormGroup({
+    input: new FormControl(''),
+    selectedOption1: new FormControl('UAH'),
+  });
+
+  converterForm2 = new FormGroup({
+    result: new FormControl('0'),
+    selectedOption2: new FormControl('UAH'),
+  });
+
 
   ngOnInit(): void {
+    // this.converterForm1.valueChanges.subscribe(value => console.log('converterForm1', value));
+    // this.converterForm2.valueChanges.subscribe(value => console.log('converterForm2', value));
   }
 
   convertValue = () => {
-    if (this.selectedOption1 === this.selectedOption2) {
-      this.result = this.input;
+    const input = this.converterForm1.value.input;
+    const selectedOption1 = this.converterForm1.value.selectedOption1;
+    const result = this.converterForm2.value.result;
+    const selectedOption2 = this.converterForm2.value.selectedOption2;
+    let sum = 0;
 
-    } else if (this.selectedOption1 === "UAH") {
-      this.sum = Number(this.input) * this.rates[this.selectedOption1];
-      this.result = (this.sum / this.rates[this.selectedOption2 as keyof IRates]).toFixed(2);
-
-    } else if (this.selectedOption2 === "UAH") {
-      this.sum = Number(this.result) * this.rates[this.selectedOption2 as keyof IRates];
-      this.result = (this.sum * this.rates[this.selectedOption1 as keyof IRates]).toFixed(2);
-      
-    } else {
-      this.result = (this.rates[this.selectedOption1 as keyof IRates] * this.rates[this.selectedOption2 as keyof IRates]).toFixed(
-        2
-      );
+    if(selectedOption1 === selectedOption2) {
+      return this.converterForm2.patchValue({
+        result: input,
+      });
     }
+
+    if(selectedOption1 === "UAH") {
+      sum = Number(input) * this.rates[selectedOption1 as keyof IRates];
+      return this.converterForm2.patchValue({
+        result: (sum / this.rates[selectedOption2 as keyof IRates]).toFixed(2),
+      })
+    }
+
+    if(selectedOption2 === "UAH") {
+      sum = Number(result) * this.rates[selectedOption2 as keyof IRates];
+      return this.converterForm2.patchValue({
+        result: (sum * this.rates[selectedOption1 as keyof IRates]).toFixed(2),
+      }) 
+    }
+
+    return this.converterForm2.patchValue({
+      result: (this.rates[selectedOption1 as keyof IRates] * this.rates[selectedOption2 as keyof IRates]).toFixed(2),
+    })
   };
 
-  handleChangeInput(event: any) {
-    const value = event.target.value;
-    this.input = value;
-    this.result = value;
+
+  handleChangeInput() {
+    this.converterForm1.patchValue({
+      input: this.converterForm1.value.input,
+    }) 
     return this.convertValue();
   }
 
-  handleChangeSelect1(event: any) {
-    this.selectedOption1 = event.target.value;
+  handleChangeSelect1() {
+    this.converterForm1.patchValue({
+      selectedOption1: this.converterForm1.value.selectedOption1,
+    })
     return this.convertValue();
   }
 
-  handleChangeSelect2(event: any) {
-    this.selectedOption2 = event.target.value;
+  handleChangeSelect2() {
+    this.converterForm2.patchValue({
+      selectedOption2: this.converterForm2.value.selectedOption2,
+    }) 
     return this.convertValue();
   }
 }

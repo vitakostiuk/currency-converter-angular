@@ -1,17 +1,6 @@
-<div class="rateBlock">
-  <h1 class="rateTitle">Курс валют</h1>
-  <ul class="list">
-    <li class="list_item">
-      <div class="rateContainer">
-        <p class="rate">$ |&nbsp;</p>
-        <span class="rateValue" data-value="EUR">{{ rates.USD }}</span>
-      </div>
-    </li>
-    <li class="list_item">
-      <div class="rateContainer">
-        <p class="rate">&#8364; |&nbsp;</p>
-        <span class="rateValue" data-value="EUR">{{ rates.EUR }}</span>
-      </div>
-    </li>
-  </ul>
-</div>
+<li class="list_item">
+  <div class="rateContainer">
+    <p class="rate">{{ currency && currency.cc }}&nbsp;|&nbsp;</p>
+    <span class="rateValue">{{ currency && currency.rate.toFixed(2) }}</span>
+  </div>
+</li>

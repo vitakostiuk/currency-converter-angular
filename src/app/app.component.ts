@@ -30,7 +30,15 @@ constructor(private ratesService: RatesService) {
         (currency) => currency.cc === "USD" || currency.cc === "EUR"
       );
 
-      filteredCurrencies.map((item) => {
+      this.currencies = [{
+        r030: 0,
+        txt: '',
+        rate: 1,
+        cc: 'UAH',
+        exchangedate: '',
+      }, ...filteredCurrencies];
+
+      this.currencies.map((item) => {
         if (item.cc === "USD") {
           this.rates.USD = Number(item.rate.toFixed(2));
         }

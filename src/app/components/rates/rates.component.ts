@@ -1,4 +1,4 @@
-import { IRates } from './../../models/rates';
+import { ICurrency } from './../../models/currency';
 import { Component, Input } from "@angular/core";
 
 @Component({
@@ -7,5 +7,5 @@ import { Component, Input } from "@angular/core";
 })
 
 export class RatesComponent {
-  @Input() rates: IRates;
+  @Input() currency: ICurrency;
 }

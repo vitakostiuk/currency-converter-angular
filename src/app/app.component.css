@@ -38,6 +38,33 @@
   align-items: center;
 }
 
+.rateBlock {
+  width: 322px;
+  display: block;
+  margin: 0 auto;
+}
+
+.rateTitle {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500 !important;
+  background-color: #f8f8f7;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0px 3px 4px rgb(170 178 197 / 40%);
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 a,
 a:visited,
 a:hover {

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {ConverterComponent} from './components/converter/converter.component';
 import { RatesComponent } from './components/rates/rates.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
